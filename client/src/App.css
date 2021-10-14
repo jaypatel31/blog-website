@@ -20,5 +20,15 @@
 .post div.detail{
   font-size: 14px;
   word-break: break-word;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif!important;
+  text-align: left;
+}
+
+.banner-img{
+  height: 50vh;
+  object-fit: cover;
+}
+
+.blog-descp,.textarea-create,.font-roboto{
+  font-family: 'Roboto', sans-serif!important;
 }

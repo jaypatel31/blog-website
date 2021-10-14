@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Categories = () => {
 
@@ -6,9 +7,11 @@ const Categories = () => {
 
     return (
         <div>
-            <button className="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-5 w-10/12">
-                Create Blog
-            </button>
+            <Link to={"/create"}>
+                <button className="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700 m-5 w-10/12">
+                    Create Blog
+                </button>
+            </Link>
             <table className="border-collapse border border-green-800 w-full">
                 <thead>
                     <tr className="p-4">

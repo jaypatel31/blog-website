@@ -6,9 +6,6 @@ module.exports = {
   },
   variants: {
     extend: {},
-    height: {
-      half:"50vh"
-    }
   },
   plugins: [],
 }

@@ -9,7 +9,7 @@ const Post = () => {
             <div className="text">Music</div>
             <div className="heading">SAWO Labs</div>
             <div className="text">Jay Patel</div>
-            <div className="detail">Hey from Jay</div>
+            <div className="detail">Hey from Jay ajssssssssssssssssssssssshudfffffffffffffffffffff</div>
         </div>
     )
 }
