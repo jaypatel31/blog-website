@@ -15,9 +15,9 @@ function App() {
       <div className="mb-8">
         <Switch>
           <Route path="/" exact={true} component={Home}/>
-          <Route path="/details" exact={true} component={DetailView}/>
+          <Route path="/details/:id" exact={true} component={DetailView}/>
           <Route path="/create" exact={true} component={CreateView} />
-          <Route path="/update" exact={true} component={UpdateView} />
+          <Route path="/update/:id" exact={true} component={UpdateView} />
         </Switch>
       </div>
     </BrowserRouter>

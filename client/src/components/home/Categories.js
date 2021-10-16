@@ -12,19 +12,25 @@ const Categories = () => {
                     Create Blog
                 </button>
             </Link>
-            <table className="border-collapse border border-green-800 w-full">
+            <table className="border-collapse w-full">
                 <thead>
                     <tr className="p-4">
-                        <th className="border border-green-600 text-left p-4 font-normal">All Categories</th>
+                        <Link to={`/`} className="w-full block">
+                            <th className="border border-green-600 text-left p-4 font-normal w-full block hover:bg-green-500 hover:text-white transition">All Categories</th>
+                        </Link>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         ct.map((item,index)=>{
                             return(
-                                <tr className="p-4" key={index}>
-                                    <td className="border border-green-600 p-4">{item}</td>
-                                </tr>
+                                
+                                    <tr className="p-4" key={index}>
+                                        <Link to={`/?category=${item}`} className="w-full block">
+                                        <td className="border border-green-600 border-t-0 p-4 w-full block hover:bg-green-500 hover:text-white transition">{item}</td>
+                                        </Link>
+                                    </tr>
+                               
                             )
                         })
                     }
