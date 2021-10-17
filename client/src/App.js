@@ -10,12 +10,10 @@ function App() {
     
     <BrowserRouter>
     
-        
           <AccountProvider>
             <Routing/>
           </AccountProvider>
         
-      
     </BrowserRouter>
     
   );
