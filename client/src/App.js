@@ -6,8 +6,6 @@ import AccountProvider from './context/AccountProvider';
 import Routing from './components/Routing';
 
 function App() {
-
-
   return (
     
     <BrowserRouter>
