@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router'
 
 import { getPost ,deletePost} from '../../service/api'
+import Comments from '../comments/Comments'
+
 
 const DetailView = ({match}) => {
     const [post, setPost] = useState({})
@@ -52,6 +54,7 @@ const DetailView = ({match}) => {
                 <div className="blog-descp">
                     {post.description}
                 </div>
+                <Comments post={post}/>
             </>
             ):"Loading..."
         }

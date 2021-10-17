@@ -32,3 +32,9 @@
 .blog-descp,.textarea-create,.font-roboto{
   font-family: 'Roboto', sans-serif!important;
 }
+
+.image-dp{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
