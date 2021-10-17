@@ -7,7 +7,7 @@ const Post = ({post}) => {
         <div style={{height:"350px"}} className="container post mt-3 mb-3 rounded-2xl border  border-green-600 flex items-center flex-col shadow-md">
             <img src={(post.picture === "")?url:post.picture} alt="wrapper" className="w-full rounded-tr-2xl rounded-tl-2xl" style={{height:"150px",objectFit:"cover"}}/>
             <div className="text">{post.categories}</div>
-            <div className="heading">{post.title}</div>
+            <div className="heading text-center">{post.title}</div>
             <div className="text">{post.username}</div>
             <div className="detail">{post.description}</div>
         </div>

@@ -55,3 +55,16 @@ export const deletePost = async (id) =>{
         console.log(`Error While Calling Deleting post,${e}`)
     }
 }
+
+export const uploadFile = async (data) => {
+    try{
+       let response = await axios.post(`${URL}/file/upload`,data,{
+            headers:{
+                'Content-Type':"application/json"
+            }
+        })
+        return response
+     }catch(e){
+         console.log(`Error While Uploading Image Banner,${e}`)
+     }
+}
