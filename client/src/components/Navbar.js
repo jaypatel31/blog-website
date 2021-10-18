@@ -1,20 +1,41 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
-const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'About', href: '/about', current: false },
-  { name: 'Contact', href: '/contact', current: false },
-  { name: 'Calendar', href: '/calender', current: false },
-]
+import { AccountContext } from '../context/AccountProvider'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 const Navbar = () => {
+
+  const {account,setAccount} = useContext(AccountContext)
+  const history = useHistory()
+  let navigation = []
+  if(account){
+    navigation = [
+      { name: 'Home', href: '/', current: true },
+      { name: 'About', href: '/about', current: false },
+      { name: 'Contact', href: '/contact', current: false },
+      { name: 'Calendar', href: '/calender', current: false },
+    ]
+  }else{
+    navigation = [
+      { name: 'Login', href: '/login', current: true },
+    ]
+  }
+  
+  const signout = (e) =>{
+    e.preventDefault()
+    localStorage.removeItem('user')
+    setAccount('')
+    history.push('/login')
+  }
+
+
     return (
         <Disclosure as="nav" className="bg-green-800">
       {({ open }) => (
@@ -63,7 +84,9 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              {
+                (account)?(
+<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
                   className="bg-green-800 p-1 rounded-full text-green-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-800 focus:ring-white"
@@ -119,6 +142,7 @@ const Navbar = () => {
                           <a
                             href="#"
                             className={classNames(active ? 'bg-green-100' : '', 'block px-4 py-2 text-sm text-green-700')}
+                            onClick={(e)=>signout(e)}
                           >
                             Sign out
                           </a>
@@ -128,6 +152,9 @@ const Navbar = () => {
                   </Transition>
                 </Menu>
               </div>
+                ):""
+              }
+              
             </div>
           </div>
 

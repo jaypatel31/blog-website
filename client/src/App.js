@@ -1,26 +1,29 @@
 import './App.css';
+import React,{useEffect, useContext} from 'react';
+import {BrowserRouter, Switch, Route, useHistory} from "react-router-dom"
 
-import {BrowserRouter, Switch, Route} from "react-router-dom"
+import AccountProvider from './context/AccountProvider';
+import Routing from './components/Routing';
 
-import Home from './components/home/Home';
-import Navbar from './components/Navbar'
-import DetailView from './components/post/DetailView';
-import CreateView from './components/post/CreateView';
-import UpdateView from './components/post/UpdateView';
+
+
+
 
 function App() {
+
+
   return (
+    
     <BrowserRouter>
-      <Navbar/>
-      <div className="mb-8">
-        <Switch>
-          <Route path="/" exact={true} component={Home}/>
-          <Route path="/details/:id" exact={true} component={DetailView}/>
-          <Route path="/create" exact={true} component={CreateView} />
-          <Route path="/update/:id" exact={true} component={UpdateView} />
-        </Switch>
-      </div>
+    
+        
+          <AccountProvider>
+            <Routing/>
+          </AccountProvider>
+        
+      
     </BrowserRouter>
+    
   );
 }
 
