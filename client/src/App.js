@@ -7,7 +7,6 @@ import Routing from './components/Routing';
 
 function App() {
   return (
-    
     <BrowserRouter>
     
           <AccountProvider>
