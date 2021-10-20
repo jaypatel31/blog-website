@@ -98,3 +98,16 @@ export const deleteComment = async (id) =>{
          console.log(`Error While calling NEw comment API,${e}`)
     }
 }
+
+export const userLogin = async (data) =>{
+    try{
+        let response = await axios.post(`${URL}/user`,data,{
+            headers:{
+                'Content-Type':"application/json"
+            }
+        })
+        return response
+    }catch(error){
+        console.log(`Error While calling user login API,${error}`)
+    }
+}

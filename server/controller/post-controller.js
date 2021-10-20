@@ -17,7 +17,7 @@ export const getAllPost = async (req,res) =>{
     let posts
     try{
         if(username){
-            posts = await Post.find({username})      
+            posts = await Post.find({user_id:username})      
         }
         else if(category){
             posts = await Post.find({categories:category})
@@ -25,6 +25,7 @@ export const getAllPost = async (req,res) =>{
         else{
             posts = await Post.find({});
         }
+       
         return res.status(200).json(posts)
     }catch(e){
         res.status(500).json({error:e})
@@ -33,7 +34,7 @@ export const getAllPost = async (req,res) =>{
 
 export const getPost = async (req,res) =>{
     try{
-        let post = await Post.findById(req.params.id)
+        let post = await Post.findById(req.params.id).populate('user_id',"_id name")
         res.status(200).json(post)
     }catch(e){
         res.status(500).json({error:e})

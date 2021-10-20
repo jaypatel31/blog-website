@@ -18,8 +18,8 @@ const Routing = () => {
       if(!user){
         history.push('/login')
       }else{
-        // setAccount(user)
-        // history.push('/')
+        setAccount(user)
+        history.push('/')
       }
     }, [])
   

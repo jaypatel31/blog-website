@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 
 import { API_KEY } from '../../config'
 import { AccountContext } from '../../context/AccountProvider'
+import { userLogin } from '../../service/api'
 
 const LoginPage = () => {
 
@@ -24,11 +25,18 @@ const LoginPage = () => {
                 console.log(payload)
                 let data ={
                     email:payload.identifier,
-                    id:payload.user_id
+                    user_id:payload.user_id,
+                    name:payload.customFieldInputValues["User Name"]
                 }
-                localStorage.setItem('user',JSON.stringify(data))
-                setAccount(data)
-                history.push('/')
+                const authenticate = async () =>{
+                    let respose = await userLogin(data)
+                    console.log(respose.data)
+                    localStorage.setItem('user',JSON.stringify(respose.data.user))
+                    setAccount(respose.data.user)
+                    history.push('/')
+                }
+                authenticate()
+                
             },
         }
         let sawo = new Sawo(config)
@@ -36,9 +44,9 @@ const LoginPage = () => {
     }, [])
 
     return (
-        <div className="mt-4">
+        <div className="mt-18">
             <h2 className="text-4xl text-center">Login Page</h2>
-            <div id="sawo-container" style={{height:"300px", width:"400px", margin:"auto", marginTop:"15px"}}></div>
+            <div id="sawo-container" style={{height:"400px", width:"400px", margin:"auto", marginTop:"100px"}}></div>
         </div>
     )
 }

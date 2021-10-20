@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect,useContext} from 'react'
 
 import { newComment, getComments } from '../../service/api'
 import Comment from './Comment'
+import { AccountContext } from '../../context/AccountProvider'
 
 const intialValue = {
-    name:"",
+    user_id:"",
     postId:"",
     date: new Date(),
     comment:""
@@ -15,10 +16,11 @@ const Comments = ({post}) => {
     const [comment, setComment] = useState(intialValue)
     const [comments, setComments] = useState([])
     const [toogle, setToogle] = useState(false)
+    const {account} = useContext(AccountContext)
 
-    const postComment= (e) =>{
+    const postComment= async (e) =>{
         e.preventDefault()
-        newComment(comment)
+        let response = await newComment(comment)
         setToogle(prevState => !prevState)
     }
 
@@ -43,7 +45,7 @@ const Comments = ({post}) => {
                     return{
                         ...prevState,
                         postId:post._id,
-                        name:post.username,
+                        user_id:account._id,
                         comment:e.target.value
                     }
                 })}>

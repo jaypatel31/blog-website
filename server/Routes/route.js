@@ -3,6 +3,7 @@ import { createPost,deletePost,getAllPost,getPost,updatePost } from "../controll
 import { uploadImage, getImage } from "../controller/image-controller.js"
 import upload from "../utils/upload.js"
 import { newComment, getComments, deleteComment } from "../controller/comment-controller.js"
+import { userLogin } from "../controller/user-controller.js"
 
 const router = express.Router()
 
@@ -16,5 +17,6 @@ router.get('/file/:filename', getImage)
 router.post('/comment/new', newComment)
 router.get('/comments/:id', getComments)
 router.delete('/comment/delete/:id', deleteComment)
+router.post('/user', userLogin)
 
 export default router

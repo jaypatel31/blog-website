@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useContext } from 'react'
 import {useHistory} from "react-router-dom"
 
 import { createPost, uploadFile } from '../../service/api'
-
+import { AccountContext } from '../../context/AccountProvider'
 
 const intialState = {
     title:"",
     description:"",
     picture:"",
-    username:"JP",
+    user_id:"",
     categories:"ALL",
     createdDate:new Date()
 }
 
 const CreateView = () => {
-    
+    const {account} = useContext(AccountContext)
     const history = useHistory()
     const [post, setPost] = useState(intialState)
     const [image, setImage] = useState('')
@@ -46,6 +46,7 @@ const CreateView = () => {
         setPost(prevState=>{
             return{
                 ...prevState,
+                user_id:account._id,
                 [name]:value
             }
         })

@@ -12,7 +12,7 @@ export const newComment = async (req,res) =>{
 
 export const getComments = async (req,res) =>{
     try{
-        const comments = await Comment.find({postId:req.params.id})
+        const comments = await Comment.find({postId:req.params.id}).populate('user_id',"_id name")
         res.status(200).json(comments)
     }catch(error){
         res.status(500).json({error})
