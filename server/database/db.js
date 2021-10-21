@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
-const connection = () =>{
-    const URL = "mongodb+srv://admin:1234@blogweb.awnct.mongodb.net/BLOGWEB?retryWrites=true&w=majority"
+const connection = (URL) =>{
+    
 
     mongoose.connect(URL,{
         useUnifiedTopology:true,
